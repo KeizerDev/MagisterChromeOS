@@ -5,14 +5,12 @@
     "manifest_version": 2,
     "default_locale": "en",
     "permissions": [
-        "app.runtime",
         "app.window",
         "webview",
         "<all_urls>",
         "http://*/*",
         "https://*/*",
-        "http://127.0.0.1/*",
-        "chrome-extension://*/*"
+        "http://127.0.0.1/*"
     ],
     "icons": {
         "16": "images/icon-16.png",
