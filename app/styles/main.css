@@ -1,3 +1,6 @@
-body {
-  padding: 20px;
+.mdl-center-card-top {
+	margin: 20px auto;
+}
+.mdl-center-card {
+	margin: 0 auto;
 }
