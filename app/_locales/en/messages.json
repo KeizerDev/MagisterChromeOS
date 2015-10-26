@@ -1,0 +1,10 @@
+{
+    "appName": {
+        "message": "Magister for chrome",
+        "description": "The name of the application"
+    },
+    "appDescription": {
+        "message": "A Chrome app to see your Magister",
+        "description": "The description of the application"
+    }
+}
