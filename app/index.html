@@ -6,7 +6,7 @@
 
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
-        <link rel="stylesheet" href="/bower_components/material-design-lite/material.min.css">
+        <link rel="stylesheet" href="bower_components/material-design-lite/material.min.css" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <!-- endbower -->
         <!-- endbuild -->
@@ -38,16 +38,51 @@
           <div class="page-content">
             <div class="mdl-card mdl-shadow--2dp mdl-center-card-top">
               <div class="mdl-card__title mdl-card--expand">
-                <h2 class="mdl-card__title-text">Update</h2>
-              </div>
-              <div class="mdl-card__supporting-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Aenan convallis.
+                <form action="#">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="searchschool" />
+                    <label class="mdl-textfield__label" for="searchschool">Zoek je school</label>
+                  </div>
+                  <div class="mdl-card--border">
+                    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect mdl-card--block" for="option-0">
+                      <input type="radio" id="option-0" class="mdl-radio__button" value="Farel" />
+                      <span class="mdl-radio__label">Farel</span>
+                    </label>
+                     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect mdl-card--block" for="option-1">
+                      <input type="radio" id="option-1" class="mdl-radio__button" value="Corlear" />
+                      <span class="mdl-radio__label">Corlear</span>
+                    </label>
+                     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect mdl-card--block" for="option-2">
+                      <input type="radio" id="option-2" class="mdl-radio__button" value="Hoogeland" />
+                      <span class="mdl-radio__label">Hoogeland</span>
+                    </label>
+                  </div>
+                </form>
               </div>
               <div class="mdl-card__actions mdl-card--border">
-                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                  View Updates
-                </a>
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Bevestig</a>
+              </div>
+            </div>
+
+            <div class="mdl-card mdl-shadow--2dp mdl-center-card-top">
+              <div class="mdl-card__title mdl-card--expand">
+                <form action="#">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="school" disabled="true" value="Corlear" />
+                    <label class="mdl-textfield__label" for="school">School</label>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="username" />
+                    <label class="mdl-textfield__label" for="username">Gebruikersnaam</label>
+                  </div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="password" id="password" />
+                    <label class="mdl-textfield__label" for="password">Wachtwoord</label>
+                  </div>
+                </form>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Login</a>
               </div>
             </div>
 
@@ -56,7 +91,9 @@
       </div>
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
-        <script src="/bower_components/material-design-lite/material.min.js"></script>
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/material-design-lite/material.min.js"></script>
+        <script src="bower_components/handlebars/handlebars.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
