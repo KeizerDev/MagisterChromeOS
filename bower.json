@@ -2,10 +2,8 @@
   "name": "magister-chrome",
   "version": "0.0.0",
   "dependencies": {
-    "material-design-lite": "~1.0.5",
-    "handlebars": "~4.0.3",
     "jquery": "~2.1.4",
-    "sammy": "~0.7.6"
+    "bootstrap": "~3.3.5"
   },
   "devDependencies": {}
 }

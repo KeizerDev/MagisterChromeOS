@@ -1,0 +1,35 @@
+body {
+  background: #3498DB;
+}
+
+.login {
+  width: 250px;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.login img {
+  width: 128px;
+  height: 128px;
+  margin-bottom: 10px;
+}
+
+.login input[type=text] {
+  margin-bottom: 15px;
+}
+
+.login button {
+  width: 100%;
+}
+
+.login .badge {
+  margin-top: 25px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background: #2980b9;
+  text-transform: uppercase;
+}
