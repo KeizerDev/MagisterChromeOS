@@ -6,14 +6,6 @@ Magister voor chrome os is speciaal ontwikkeld voor scholen welke gebruik maken 
 Zoeken naar school: https://mijn.magister.net/api/schools?filter={query}
 ```
 
-```
-Zoeken naar school: https://mijn.magister.net/api/schools?filter={query}
-```
-
-```
-Zoeken naar school: https://mijn.magister.net/api/schools?filter={query}
-```
-
 ## To Do
 - [x] Modern Design
 
