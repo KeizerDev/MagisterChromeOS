@@ -16,7 +16,22 @@
         <!-- endbuild -->
     </head>
     <body>
-        <div class="login"><img src="images/magister.png">
+
+        <!-- Schoolkiezer -->
+        <div class="login">
+            <img src="images/magister.png">
+            <form onsubmit="searchSchool()">
+                <input class="form-control schoolsearch" type="text" placeholder="School">
+                <input class="btn btn-default" type="submit" value="KIES MIJN SCHOOL">
+            </form>
+            <span class="badge">BETA</span>
+        </div>
+
+        
+        <!-- Login -->
+        
+        <!-- <div class="login">
+            <img src="images/magister.png">
             <form>
                 <input class="form-control" type="text" placeholder="Gebruikersnaam">
                 <input class="form-control" type="text" placeholder="Wachtwoord">
@@ -24,7 +39,8 @@
             </form>
             <span class="badge">BETA</span>
             <div class="version">Version 0.0.1</div>
-        </div>
+        </div> -->
+
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
