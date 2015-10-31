@@ -10,6 +10,6 @@ Zoeken naar school: https://mijn.magister.net/api/schools?filter={query}
 - [x] Modern Design
 
 ## Screenshots
-![](https://raw.githubusercontent.com/abcroes/Magister/master/assets/screenshots/screen1.png)
+![](http://i64.tinypic.com/2q225pg.png)
 
 ## Bugs
