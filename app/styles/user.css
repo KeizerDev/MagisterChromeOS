@@ -80,7 +80,7 @@ body {
   width: 100%;
 }
 
-ul {
+.schoolresult {
   border-radius: 5px;
   max-height: 100px;
   widows: 100%;
@@ -89,10 +89,13 @@ ul {
   padding: 0;
   margin: 0;
   margin-bottom: 5px;
+  background-color: white;
 }
 
-li {
-  border: 1px #358EC9 solid;
+label {
+  /*border-bottom: 1px #358EC9 solid;*/
+  width: 100%;
+  position: relative;
   padding: 5px;
   color: #555555;
   font-weight: bold;
@@ -101,7 +104,22 @@ li {
   cursor: pointer;
 }
 
-li.selected:before {
+[type="radio"] {
+  border: 0; 
+  clip: rect(0 0 0 0); 
+  height: 1px; margin: -1px; 
+  overflow: hidden; 
+  padding: 0; 
+  position: absolute; 
+  width: 1px;
+}
+
+[type="radio"] + span {
+  display: block;
+}
+
+/* the checked style using the :checked pseudo class */
+[type="radio"]:checked + span::before {
   content: "";
   position: absolute;
   font-family: "Glyphicons Halflings";
@@ -111,7 +129,6 @@ li.selected:before {
   left: 5px;
   top: 50%;
   transform: translateY(-50%);
-
 }
 
 .list-group {
