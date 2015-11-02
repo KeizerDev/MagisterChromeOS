@@ -1,6 +1,7 @@
 body {
   background: #3498DB;
 }
+
 .login {
   width: 250px;
   text-align: center;
@@ -10,6 +11,7 @@ body {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
+
 .login img {
   width: 128px;
   height: 128px;
@@ -17,12 +19,13 @@ body {
 }
 
 .login input[type=text] {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .login button {
   width: 100%;
 }
+
 .login .badge {
   margin-top: 25px;
   margin-left: 5px;
@@ -31,61 +34,86 @@ body {
   text-transform: uppercase;
   font-weight: normal;
 }
+
 .login .version {
-    color: white;
-    margin-top: 15px;
-    font-size: 11px;
+  color: white;
+  margin-top: 15px;
+  font-size: 11px;
 }
+
 .form-control {
-    -webkit-box-shadow: inset 0 2px 0 rgba(0,0,0,0.075);
-    box-shadow: inset 0 2px 0 rgba(0,0,0,0.075);
+  -webkit-box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.075);
 }
+
 .form-control {
-    display: block;
-    width: 100%;
-    height: 38px;
-    padding: 7px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555555;
-    background-color: #ffffff;
-    border: 1px solid #e7e7e7;
-    border-radius: 4px;
+  display: block;
+  width: 100%;
+  height: 38px;
+  padding: 7px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #ffffff;
+  border: 1px solid #e7e7e7;
+  border-radius: 4px;
 }
+
 .btn-default {
-    background-color: #eeeeee;
-    border-color: #e2e2e2;
-    border-width: 0 1px 4px 1px;
-    border-radius: 4px;
-    padding: 9px 12px 7px;
-    border-width: 0 1px 4px 1px;
-    font-size: 12px;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #555555;
+  background-color: #eeeeee;
+  border-color: #e2e2e2;
+  border-width: 0 1px 4px 1px;
+  border-radius: 4px;
+  padding: 9px 12px 7px;
+  border-width: 0 1px 4px 1px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #555555;
 }
-.btn-default:hover{
-    border-color: #e2e2e2;
+
+.btn-default:hover {
+  border-color: #e2e2e2;
 }
-.login input[type=submit]{
-    width: 100%;
+
+.login input[type=submit] {
+  width: 100%;
 }
-ul{
-  height: 100px;
+
+ul {
+  border-radius: 5px;
+  max-height: 100px;
   widows: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
   list-style-type: none;
   padding: 0;
   margin: 0;
   margin-bottom: 5px;
 }
-li{
+
+li {
   border: 1px #358EC9 solid;
-  background: #2980b9;
-  border-radius: 5px;
   padding: 5px;
-  color: white;
+  color: #555555;
   font-weight: bold;
   text-transform: uppercase;
   font-size: 11px;
+  cursor: pointer;
+}
+
+li.selected:before {
+  content: "";
+  position: absolute;
+  font-family: "Glyphicons Halflings";
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+
+}
+
+.list-group {
+  margin-bottom: 10px;
 }
