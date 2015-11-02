@@ -32,7 +32,6 @@ body {
   background: #2980b9;
   text-transform: uppercase;
   font-weight: normal;
-
 }
 .login .version {
     color: white;
@@ -67,4 +66,11 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     color: #555555;
+}
+.btn-default:hover{
+  border-color: #e2e2e2;
+  
+}
+.login input[type=submit]{
+  width: 100%;
 }

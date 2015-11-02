@@ -1,7 +1,7 @@
 'use strict';
 $( document ).ready(function() {
 
-    console.log( 'ready!' );
+    console.log( 'Ready For Action Bitch!' );
 });
 
 // function searchSchool(qry) {
