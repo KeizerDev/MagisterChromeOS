@@ -26,5 +26,30 @@ $( document ).ready(function() {
     $("form").on("submit", function (e) {
         e.preventDefault();
     });
+
+
+    $.ajax({
+        url: 'https://ams.magister.net/api/sessies/huidige',
+        type: 'DELETE'
+    })
+    .done(function() {
+        console.log("success");
+        $.ajax({
+            url: 'https://ams.magister.net/api/sessies',
+            type: 'POST',
+            data: {"Gebruikersnaam":"5241","Wachtwoord":"zfarnk","IngelogdBlijven":false}
+        })
+        .done(function(res) {
+            console.log("success");
+            console.log(res);
+        })
+        .fail(function(res) {
+            console.log("error");
+            console.log(res);
+        });
+    })
+    .fail(function() {
+        console.log("error");
+    });
     
 });
