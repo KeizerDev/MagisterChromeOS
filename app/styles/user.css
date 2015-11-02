@@ -10,7 +10,6 @@ body {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-
 .login img {
   width: 128px;
   height: 128px;
@@ -18,13 +17,12 @@ body {
 }
 
 .login input[type=text] {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .login button {
   width: 100%;
 }
-
 .login .badge {
   margin-top: 25px;
   margin-left: 5px;
@@ -54,7 +52,6 @@ body {
     border: 1px solid #e7e7e7;
     border-radius: 4px;
 }
-
 .btn-default {
     background-color: #eeeeee;
     border-color: #e2e2e2;
@@ -68,9 +65,27 @@ body {
     color: #555555;
 }
 .btn-default:hover{
-  border-color: #e2e2e2;
-  
+    border-color: #e2e2e2;
 }
 .login input[type=submit]{
-  width: 100%;
+    width: 100%;
+}
+ul{
+  height: 100px;
+  widows: 100%;
+  overflow: scroll;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 5px;
+}
+li{
+  border: 1px #358EC9 solid;
+  background: #2980b9;
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 11px;
 }
