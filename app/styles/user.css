@@ -73,7 +73,7 @@ body {
 ul{
   height: 100px;
   widows: 100%;
-  overflow: scroll;
+  overflow-y: scroll;
   list-style-type: none;
   padding: 0;
   margin: 0;
