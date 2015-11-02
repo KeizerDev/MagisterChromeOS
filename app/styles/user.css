@@ -17,7 +17,7 @@ body {
 }
 
 .login input[type=text] {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .login button {
@@ -70,22 +70,6 @@ body {
 .login input[type=submit]{
     width: 100%;
 }
-ul{
-  height: 100px;
-  widows: 100%;
-  overflow: scroll;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  margin-bottom: 5px;
-}
-li{
-  border: 1px #358EC9 solid;
-  background: #2980b9;
-  border-radius: 5px;
-  padding: 5px;
-  color: white;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 11px;
+.list-group{
+  margin-bottom: 10px;
 }
