@@ -30,6 +30,8 @@ $( document ).ready(function() {
     });
 
 
+
+
     $.ajax({
         url: 'https://ams.magister.net/api/sessies/huidige',
         type: 'DELETE'
@@ -39,26 +41,32 @@ $( document ).ready(function() {
         $.ajax({
             url: 'https://ams.magister.net/api/sessies',
             type: 'POST',
-            data: {Gebruikersnaam: "5241", Wachtwoord: "zfarnk", IngelogdBlijven: false}
-        })
-        .done(function(res) {
-            console.log("success");
-            console.log(res);
-            $.ajax({
-                url: 'https://ams.magister.net/api/sessies/huidige'
-            }).done(function(res) {
-                console.log(res)
-            }).fail(function() {
-                console.log("error");
-            });
-        })
-        .fail(function(res) {
-            console.log("error");
-            console.log(res);
+            data: {Gebruikersnaam: "5241", Wachtwoord: "zfarnk", IngelogdBlijven: false},
+            success: function(data, textStatus, request){
+                console.log("success");
+                console.log(request);
+                // alert(request.getResponseHeader(''));
+                // alert(request.getResponseHeader(''));
+                // console.log(this.headers) 
+                console.log(request.getResponseHeader('Set-Cookie'));
+                console.log(data);
+                $.ajax({
+                    url: 'https://ams.magister.net/api/sessies',
+                    type: 'POST',
+                    data: {"Gebruikersnaam":"5241","Wachtwoord":"zfarnk","IngelogdBlijven":false},
+                    success: function(data, textStatus, requests){
+                        console.log(requests.getResponseHeader('Set-Cookie'));
+                     
+                        $.ajax({
+                            url: 'https://ams.magister.net/api/accounts/6246',
+                            success: function(result) {
+                                console.log(result)
+                            }
+                        });
+                    }
+                });
+            }
         });
-    })
-    .fail(function() {
-        console.log("error");
-    });
+        });
     
 });
