@@ -42,6 +42,13 @@ $( document ).ready(function() {
         .done(function(res) {
             console.log("success");
             console.log(res);
+            $.ajax({
+                url: 'https://ams.magister.net/api/sessies/huidige'
+            }).done(function(res) {
+                console.log(res)
+            }).fail(function() {
+                console.log("error");
+            });
         })
         .fail(function(res) {
             console.log("error");
