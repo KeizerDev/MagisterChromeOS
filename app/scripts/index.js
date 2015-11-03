@@ -1,5 +1,7 @@
 'use strict';
 $( document ).ready(function() {
+    var tempSchoolkiezen = Handlebars.compile($("#schoolkiezen").html());
+    var tempSchoollogin = Handlebars.compile($("#schoollogin").html());
 
     $(document).on('change', '#schoolsearch', function(e) {
         $.get('https://mijn.magister.net/api/schools?filter=' + $('#schoolsearch').val(), function(res) {
@@ -37,7 +39,7 @@ $( document ).ready(function() {
         $.ajax({
             url: 'https://ams.magister.net/api/sessies',
             type: 'POST',
-            data: {"Gebruikersnaam":"5241","Wachtwoord":"zfarnk","IngelogdBlijven":false}
+            data: {Gebruikersnaam: "5241", Wachtwoord: "zfarnk", IngelogdBlijven: false}
         })
         .done(function(res) {
             console.log("success");

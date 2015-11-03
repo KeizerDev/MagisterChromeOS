@@ -12,10 +12,11 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.login img {
+.login img.logo {
   width: 128px;
   height: 128px;
   margin-bottom: 10px;
+  transition: all 2s ease-in-out 1s;
 }
 
 .login input[type=text] {
