@@ -1,6 +1,4 @@
-body {
-  background: #3498DB;
-}
+body { background: #3498DB; }
 
 .login {
   width: 250px;
@@ -19,9 +17,9 @@ body {
 }
 
 .login input[type=text] {
-  margin-bottom: 10px;
+  margin-bottom: 10px;  
 }
-
+ 
 .login button {
   width: 100%;
 }
