@@ -6,23 +6,22 @@ $( document ).ready(function() {
 
     setTimeout(function() {
         $('.login-container').html(tempSchoolkiezen());
-    }, 1000);
-
-    $(document).on('change', '#schoolsearch', function(e) {
-        $.get('https://mijn.magister.net/api/schools?filter=' + $('#schoolsearch').val(), function(res) {
-            $('.schoolresult').html('');
-            if (res.length == 0) {
-                $('<label for="" disabled><input type="radio" value="accessible" name="quality" id=""><span>Geen school gevonden</span></label>').appendTo('.schoolresult');
-            } else {
-                $.each(res, function(index, val) {
-                    var reg = new RegExp('https://([^<]*).magister.net', 'g');
-                    $('<label for="'+ val.Id +'"><input type="radio" value="accessible" name="quality" id="'+ val.Id +'"><span>'+ reg.exec(val.Url)[1] +'</span></label>').appendTo('.schoolresult');
-                });
-            }
-            console.log(res);
+        $('#schoolsearch').on('change', function(e) {
+            $.get('https://mijn.magister.net/api/schools?filter=' + $('#schoolsearch').val(), function(res) {
+                $('.schoolresult').html(tempSchoolkiezen(res));
+                if (res.length == 0) {
+                    $('<label for="" disabled><input type="radio" value="accessible" name="quality" id=""><span>Geen school gevonden</span></label>').appendTo('.schoolresult');
+                } else {
+                    $.each(res, function(index, val) {
+                        var reg = new RegExp('https://([^<]*).magister.net', 'g');
+                        $('<label for="'+ val.Id +'"><input type="radio" value="accessible" name="quality" id="'+ val.Id +'"><span>'+ reg.exec(val.Url)[1] +'</span></label>').appendTo('.schoolresult');
+                    });
+                }
+                console.log(res);
+            });
+            e.preventDefault();
         });
-        e.preventDefault();
-    });
+    }, 1000);
 
     $(document).on('click', '.schoolresult li', function(e) {
         console.log(e);
