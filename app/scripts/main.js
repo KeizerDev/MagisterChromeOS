@@ -7,7 +7,7 @@ chrome.app.runtime.onLaunched.addListener(function() {
     bounds: {width: 350, height: 500},
     minWidth: 350,
     minHeight: 500,
-    maxWidth: 350,
+    maxWidth: 700,
     maxHeight: 500,
     frame: {
         type: 'chrome',
