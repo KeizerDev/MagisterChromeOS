@@ -28,7 +28,7 @@ body {
   width: calc(100vw - 100px);
   height: 100vh;
   margin-left: 100px;
-  padding-top: 10px;
+  padding-top: 15px;
 }
 
 ul {
@@ -77,17 +77,25 @@ ul li.logo{
   text-transform: uppercase;
   font-weight: bold;
 }
-.col-xs-6{
+
+.col-xs-6 {
   padding: 0;
 }
+
 .panel-heading {
   padding: 5px;
+
+}
+
+.panel-body {
+  padding: 10px;
+  border-radius: 0px;
 }
 
 .panel-item:nth-child(2n) {
-  padding-right: 2.5px;
+  padding-right: 10px;
 }
 
 .panel-item:nth-child(2n - 1) {
-  padding-left: 2.5px;
+  padding-left: 10px;
 }
