@@ -1,7 +1,12 @@
 'use strict';
+
 $( document ).ready(function() {
     var tempSchoolkiezen = Handlebars.compile($("#schoolkiezen").html());
     var tempSchoollogin = Handlebars.compile($("#schoollogin").html());
+
+    setTimeout(function() {
+        $('.login-container').html(tempSchoolkiezen());
+    }, 1000);
 
     $(document).on('change', '#schoolsearch', function(e) {
         $.get('https://mijn.magister.net/api/schools?filter=' + $('#schoolsearch').val(), function(res) {
