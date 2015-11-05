@@ -1,6 +1,7 @@
 'use strict';
 
 $( document ).ready(function() {
+    var school;
     var tempSchoollogin = $('#schoollogin').html();
     var tempSchoolkiezen = $('#schoolkiezen').html();
 
@@ -8,15 +9,15 @@ $( document ).ready(function() {
     // $('.login-container').html(rendered);
 
     $('.login-container').html(Mustache.render(tempSchoolkiezen, {}));
-    $('#schoolsearch').on('change', function(e) {
+    $('#schoolsearch').on('input', function(e) {
         $.get('https://mijn.magister.net/api/schools?filter=' + $('#schoolsearch').val(), function(res) {
             $('.schoolresult').html('');
             if (res.length == 0) {
-                $('<label for="" disabled><input type="radio" value="accessible" name="quality" id=""><span>Geen school gevonden</span></label>').appendTo('.schoolresult');
+                $('<label for="" disabled><input type="radio" name="school" id=""><span>Geen school gevonden</span></label>').appendTo('.schoolresult');
             } else {
                 $.each(res, function(index, val) {
                     var reg = new RegExp('https://([^<]*).magister.net', 'g');
-                    $('<label for="'+ val.Id +'"><input type="radio" value="accessible" name="quality" id="'+ val.Id +'"><span>'+ reg.exec(val.Url)[1] +'</span></label>').appendTo('.schoolresult');
+                    $('<label for="'+ val.Id +'"><input type="radio" name="school" data-schoolname="'+ reg.exec(val.Url)[1] +'" id="'+ val.Id +'"><span>'+ val.Name +'</span></label>').appendTo('.schoolresult');
                 });
             }
             console.log(res);
@@ -24,51 +25,61 @@ $( document ).ready(function() {
         e.preventDefault();
     });
 
+
+    $('.btn-submit-school').on('click', function(event) {
+        school = $('.schoolresult input[name="school"]:checked', '.mgstr-school').data('schoolname');
+        $('.login-container').html(Mustache.render(tempSchoollogin, {}));
+        event.preventDefault();
+    });
+
+
+    $('.btn-submit-login').on('click', function(event) {
+        var username = $('.mgstr-user', '.mgstr-login').val();
+        var password = $('.mgstr-pass', '.mgstr-login').val();
+        var schoolprefix = 'https://'+school+'.magister.net/api';
+        
+        $.ajax({
+            url: schoolprefix + '/sessies/huidige',
+            type: 'DELETE',
+            xhrFields: {
+                withCredentials: true
+            },
+            success: function(data, textStatus, xhr){
+                // console.log(xhr.getAllResponseHeaders());
+                $.ajax({
+                    url: schoolprefix + '/sessies',
+                    type: 'POST',
+                    data: {Gebruikersnaam: username, Wachtwoord: password, IngelogdBlijven: false},
+                    xhrFields: {
+                        withCredentials: true,
+                        setDisableHeaderCheck: true
+                    },
+                    success: function(data, textStatus, xhr){
+
+
+                        console.log("success");
+                        console.log(xhr);
+                        // alert(request.getResponseHeader(''));
+                        // alert(request.getResponseHeader(''));
+                        // console.log(this.headers)
+                        console.log(xhr.getAllResponseHeaders());
+                        console.log(xhr.getResponseHeader('Set-Cookie'));
+                        console.log(data);
+
+                    }
+                });
+            }
+        });
+        event.preventDefault();
+    });
+
 });
 
 
 
 
-//     $("form").on("submit", function (e) {
-//         e.preventDefault();
-//     });
-
-//     $.ajax({
-//         url: 'https://ams.magister.net/api/sessies/huidige',
-//         type: 'DELETE',
-//         xhrFields: {
-//             withCredentials: true
-//         },
-//         success: function(data, textStatus, xhr){
-//             // console.log(xhr.getAllResponseHeaders());
-//             $.ajax({
-//                 url: 'https://ams.magister.net/api/sessies',
-//                 type: 'POST',
-//                 data: {Gebruikersnaam: "5241", Wachtwoord: "zfarnk", IngelogdBlijven: false},
-//                 xhrFields: {
-//                     withCredentials: true,
-//                     setDisableHeaderCheck: true
-//                 },
-//                 success: function(data, textStatus, xhr){
-
-
-//                     console.log("success");
-//                     console.log(xhr);
-//                     // alert(request.getResponseHeader(''));
-//                     // alert(request.getResponseHeader(''));
-//                     // console.log(this.headers)
-//                     console.log(xhr.getAllResponseHeaders());
-//                     console.log(xhr.getResponseHeader('Set-Cookie'));
-//                     console.log(data);
-
-//                 }
-//             });
-//         }
-//     });
-// });
-
 // $.ajax({
-//     url: 'https://ams.magister.net/api/personen/5431/afspraken?status=1&tot=2015-11-04&van=2015-11-03',
+//     url: schoolprefix + '/personen/5431/afspraken?status=1&tot=2015-11-04&van=2015-11-03',
 //     success: function(result) {
 //         console.log(result)
 //     }

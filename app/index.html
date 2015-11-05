@@ -20,19 +20,19 @@
     <body>
         <!-- Schoolkiezer -->
         <script id="schoolkiezen" type="x-tmpl-mustache">
-            <form target="_blank">
+            <form target="_blank" class="mgstr-school">
                 <input class="form-control" type="text" id="schoolsearch" placeholder="School">
                 <div class="list-group schoolresult"></div>
-                <input class="btn btn-default" type="submit" value="KIES MIJN SCHOOL">
+                <input class="btn btn-default btn-submit-school" type="submit" value="KIES MIJN SCHOOL">
             </form
         </script>
 
         <!-- Login -->
         <script id="schoollogin" type="x-tmpl-mustache">
-            <form target="_blank">
-                <input class="form-control" type="text" placeholder="Gebruikersnaam">
-                <input class="form-control" type="text" placeholder="Wachtwoord">
-                <input class="btn btn-default" type="submit" value="Inloggen">
+            <form target="_blank" class="mgstr-login">
+                <input class="form-control mgstr-user" type="text" placeholder="Gebruikersnaam">
+                <input class="form-control mgstr-pass" type="text" placeholder="Wachtwoord">
+                <input class="btn btn-default btn-submit-login" type="submit" value="Inloggen">
             </form>
         </script>
 
