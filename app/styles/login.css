@@ -31,7 +31,7 @@ body { background: #3498DB; }
   margin-right: 5px;
   background: #2980b9;
   text-transform: uppercase;
-  font-weight: normal;
+  font-weight: bold;
 }
 
 .login .version {

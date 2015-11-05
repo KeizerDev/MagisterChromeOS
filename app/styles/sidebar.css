@@ -28,6 +28,7 @@ body {
   width: calc(100vw - 100px);
   height: 100vh;
   margin-left: 100px;
+  padding-top: 10px;
 }
 
 ul {
@@ -35,6 +36,7 @@ ul {
   padding: 0;
   list-style-type: none;
 }
+
 ul li {
   text-align: center;
   color: white;
@@ -42,24 +44,42 @@ ul li {
   text-transform: uppercase;
   border-bottom: 1px #48A3DF solid;
   padding: 14px 0;
-  
 }
+
 ul li.logo{
   width: 100%;
   padding: 14px 0;
   text-align: center;
   border-bottom: 1px #48A3DF solid;
 }
+
 .avatar{
   width: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
   text-align: center;
 }
+
 .glyphicon {
   width: 100%;
   font-size: 20px;
 }
+
 .img-circle{
   border: 2px solid #2980b9;
+}
+
+.badge {
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background: #2980b9;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.col-xs-6{
+  padding: 0;
+}
+.panel-heading {
+  padding: 5px;
 }
