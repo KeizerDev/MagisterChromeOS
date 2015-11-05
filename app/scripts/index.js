@@ -36,7 +36,7 @@ $( document ).ready(function() {
             withCredentials: true
         },
         success: function(data, textStatus, xhr){
-            console.log(xhr.getAllResponseHeaders());
+            // console.log(xhr.getAllResponseHeaders());
             $.ajax({
                 url: 'https://ams.magister.net/api/sessies',
                 type: 'POST',
