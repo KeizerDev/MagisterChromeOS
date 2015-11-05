@@ -7,7 +7,6 @@
 
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -26,20 +25,15 @@
             <span class="badge">BETA</span>
             <div class="version">Version 0.0.1</div>
         </div>
-
-    <div id="buttons">
-      <button id="sendMessage">Click me</button>
-      <button id="reset">Reset counter</button>
-    </div>
-
-    <div id="result"></div>
-
-    <iframe id="theFrame" src="sandbox.html" style="display: none;"></iframe>
+        <script id="template" type="x-tmpl-mustache">
+        Hello {{ name }}!
+        </script>
+        <iframe id="theFrame" src="sandbox.html" style="display: none;"></iframe>
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
-        <script src="bower_components/handlebars/handlebars.min.js"></script>
         <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/mustache.js/mustache.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 

@@ -1,12 +1,7 @@
 'use strict';
 
-document.addEventListener('DOMContentLoaded', function() {
+$( document ).ready(function() {
     var counter=0;
-
-    document.getElementById('reset').addEventListener('click', function(event) {
-        document.querySelector("#result").innerHTML="";
-    });
-
     var loginschool = {
       command: 'render',
       templateName: 'schoollogin',
