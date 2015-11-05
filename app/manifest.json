@@ -23,8 +23,5 @@
                 "scripts/chromereload.js"
             ]
         }
-    },
-    "sandbox": {
-    "pages": ["sandbox.html"]
-  }
+    }
 }

@@ -7,6 +7,7 @@
 
         <!-- build:css styles/vendor.css -->
         <!-- bower:css -->
+        <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -17,6 +18,25 @@
         <!-- endbuild -->
     </head> 
     <body>
+        <!-- Schoolkiezer -->
+        <script id="schoolkiezen" type="x-tmpl-mustache">
+            <form target="_blank">
+                <input class="form-control" type="text" id="schoolsearch" placeholder="School">
+                <div class="list-group schoolresult"></div>
+                <input class="btn btn-default" type="submit" value="KIES MIJN SCHOOL">
+            </form
+        </script>
+
+        <!-- Login -->
+        <script id="schoollogin" type="x-tmpl-mustache">
+            <form target="_blank">
+                <input class="form-control" type="text" placeholder="Gebruikersnaam">
+                <input class="form-control" type="text" placeholder="Wachtwoord">
+                <input class="btn btn-default" type="submit" value="Inloggen">
+            </form>
+        </script>
+
+
         <div class="login">
             <img class="login-logo" src="images/magister.png">
             <div class="login-container">
@@ -26,9 +46,9 @@
             <div class="version">Version 0.0.1</div>
         </div>
         <script id="template" type="x-tmpl-mustache">
-        Hello {{ name }}!
+            Hello {{ name }}!
         </script>
-        <iframe id="theFrame" src="sandbox.html" style="display: none;"></iframe>
+        <!-- <iframe id="theFrame" src="sandbox.html" style="display: none;"></iframe> -->
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="bower_components/jquery/dist/jquery.js"></script>
