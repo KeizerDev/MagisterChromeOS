@@ -29,44 +29,41 @@ $( document ).ready(function() {
         e.preventDefault();
     });
 
-
-
-
     $.ajax({
         url: 'https://ams.magister.net/api/sessies/huidige',
-        type: 'DELETE'
-    })
-    .done(function() {
-        console.log("success");
-        $.ajax({
-            url: 'https://ams.magister.net/api/sessies',
-            type: 'POST',
-            data: {Gebruikersnaam: "5241", Wachtwoord: "zfarnk", IngelogdBlijven: false},
-            success: function(data, textStatus, request){
-                console.log("success");
-                console.log(request);
-                // alert(request.getResponseHeader(''));
-                // alert(request.getResponseHeader(''));
-                // console.log(this.headers) 
-                console.log(request.getResponseHeader('Set-Cookie'));
-                console.log(data);
-                $.ajax({
-                    url: 'https://ams.magister.net/api/sessies',
-                    type: 'POST',
-                    data: {"Gebruikersnaam":"5241","Wachtwoord":"zfarnk","IngelogdBlijven":false},
-                    success: function(data, textStatus, requests){
-                        console.log(requests.getResponseHeader('Set-Cookie'));
-                     
-                        $.ajax({
-                            url: 'https://ams.magister.net/api/accounts/6246',
-                            success: function(result) {
-                                console.log(result)
-                            }
-                        });
-                    }
-                });
-            }
-        });
-        });
-    
+        type: 'DELETE',
+        xhrFields: {
+            withCredentials: true
+        },
+        success: function(data, textStatus, xhr){
+            console.log(xhr.getAllResponseHeaders());
+            $.ajax({
+                url: 'https://ams.magister.net/api/sessies',
+                type: 'POST',
+                data: {Gebruikersnaam: "5241", Wachtwoord: "zfarnk", IngelogdBlijven: false},
+                xhrFields: {
+                    withCredentials: true,
+                    setDisableHeaderCheck: true
+                },
+                success: function(data, textStatus, xhr){
+
+
+                    console.log("success");
+                    console.log(xhr);
+                    // alert(request.getResponseHeader(''));
+                    // alert(request.getResponseHeader(''));
+                    // console.log(this.headers) 
+                    console.log(xhr.getAllResponseHeaders());
+                    console.log(xhr.getResponseHeader('Set-Cookie'));
+                    console.log(data);
+                    $.ajax({
+                        url: 'https://ams.magister.net/api/personen/5431/afspraken?status=1&tot=2015-11-04&van=2015-11-03',
+                        success: function(result) {
+                            console.log(result)
+                        }
+                    });
+                }
+            });
+        }
+    });
 });
