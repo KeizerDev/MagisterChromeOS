@@ -1,0 +1,11 @@
+<script src="bower_components/handlebars/handlebars.min.js"></script>
+<script id="hello-world-template" type="text/x-handlebars-template">
+  <div class="entry">
+    <h1>Hello, {{thing}}!</h1>
+  </div>
+</script>
+<script>
+  var templates = [];
+  var source = document.getElementById('hello-world-template').innerHTML;
+  templates['hello'] = Handlebars.compile(source);
+</script>

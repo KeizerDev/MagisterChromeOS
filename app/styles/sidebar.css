@@ -83,3 +83,11 @@ ul li.logo{
 .panel-heading {
   padding: 5px;
 }
+
+.panel-item:nth-child(2n) {
+  padding-right: 2.5px;
+}
+
+.panel-item:nth-child(2n - 1) {
+  padding-left: 2.5px;
+}

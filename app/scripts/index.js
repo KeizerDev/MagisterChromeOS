@@ -1,5 +1,16 @@
 'use strict';
 
+
+chrome.browserAction.onClicked.addListener(function() {
+ var iframe = document.getElementById('theFrame');
+ var message = {
+   command: 'render',
+   context: {thing: 'world'}
+ };
+ iframe.contentWindow.postMessage(message, '*');
+});
+
+
 $( document ).ready(function() {
     var tempSchoolkiezen = Handlebars.compile($("#schoolkiezen").html());
     var tempSchoollogin = Handlebars.compile($("#schoollogin").html());
@@ -23,53 +34,53 @@ $( document ).ready(function() {
         });
     }, 1000);
 
-    $(document).on('click', '.schoolresult li', function(e) {
-        console.log(e);
-        console.log($(e.target).addClass('selected'));
-        e.preventDefault();
-    });
+//     $(document).on('click', '.schoolresult li', function(e) {
+//         console.log(e);
+//         console.log($(e.target).addClass('selected'));
+//         e.preventDefault();
+//     });
 
-    $("form").on("submit", function (e) {
-        e.preventDefault();
-    });
+//     $("form").on("submit", function (e) {
+//         e.preventDefault();
+//     });
 
-    $.ajax({
-        url: 'https://ams.magister.net/api/sessies/huidige',
-        type: 'DELETE',
-        xhrFields: {
-            withCredentials: true
-        },
-        success: function(data, textStatus, xhr){
-            // console.log(xhr.getAllResponseHeaders());
-            $.ajax({
-                url: 'https://ams.magister.net/api/sessies',
-                type: 'POST',
-                data: {Gebruikersnaam: "5241", Wachtwoord: "zfarnk", IngelogdBlijven: false},
-                xhrFields: {
-                    withCredentials: true,
-                    setDisableHeaderCheck: true
-                },
-                success: function(data, textStatus, xhr){
+//     $.ajax({
+//         url: 'https://ams.magister.net/api/sessies/huidige',
+//         type: 'DELETE',
+//         xhrFields: {
+//             withCredentials: true
+//         },
+//         success: function(data, textStatus, xhr){
+//             // console.log(xhr.getAllResponseHeaders());
+//             $.ajax({
+//                 url: 'https://ams.magister.net/api/sessies',
+//                 type: 'POST',
+//                 data: {Gebruikersnaam: "5241", Wachtwoord: "zfarnk", IngelogdBlijven: false},
+//                 xhrFields: {
+//                     withCredentials: true,
+//                     setDisableHeaderCheck: true
+//                 },
+//                 success: function(data, textStatus, xhr){
 
 
-                    console.log("success");
-                    console.log(xhr);
-                    // alert(request.getResponseHeader(''));
-                    // alert(request.getResponseHeader(''));
-                    // console.log(this.headers)
-                    console.log(xhr.getAllResponseHeaders());
-                    console.log(xhr.getResponseHeader('Set-Cookie'));
-                    console.log(data);
+//                     console.log("success");
+//                     console.log(xhr);
+//                     // alert(request.getResponseHeader(''));
+//                     // alert(request.getResponseHeader(''));
+//                     // console.log(this.headers)
+//                     console.log(xhr.getAllResponseHeaders());
+//                     console.log(xhr.getResponseHeader('Set-Cookie'));
+//                     console.log(data);
 
-                }
-            });
-        }
-    });
+//                 }
+//             });
+//         }
+//     });
 });
 
-$.ajax({
-    url: 'https://ams.magister.net/api/personen/5431/afspraken?status=1&tot=2015-11-04&van=2015-11-03',
-    success: function(result) {
-        console.log(result)
-    }
-});
+// $.ajax({
+//     url: 'https://ams.magister.net/api/personen/5431/afspraken?status=1&tot=2015-11-04&van=2015-11-03',
+//     success: function(result) {
+//         console.log(result)
+//     }
+// });
