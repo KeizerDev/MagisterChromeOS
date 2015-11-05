@@ -1,38 +1,34 @@
-// 'use strict';
+'use strict';
 
-
-var counter=0;
 document.addEventListener('DOMContentLoaded', function() {
+    var counter=0;
 
-  document.getElementById('reset').addEventListener('click', function(event) {
-    counter=0;
-    document.querySelector("#result").innerHTML="";
-  });
+    document.getElementById('reset').addEventListener('click', function(event) {
+        document.querySelector("#result").innerHTML="";
+    });
 
-  document.getElementById('sendMessage').addEventListener('click', function(event) {
-    counter++;
-    var message = {
+    var loginschool = {
       command: 'render',
       templateName: 'schoollogin',
       context: {'counter': counter}
     };
 
-    var message1 = {
+    var searchschool = {
       command: 'render',
       templateName: 'schoolkiezen',
       context: {'counter': counter}
     };
-    document.getElementById('theFrame').contentWindow.postMessage(message, '*');
+
+    document.getElementById('theFrame').contentWindow.postMessage(searchschool, '*');
 
     setTimeout(function() {
-    document.getElementById('theFrame').contentWindow.postMessage(message1, '*');
+        document.getElementById('theFrame').contentWindow.postMessage(loginschool, '*');
     }, 1000);
-  });
 
-  // on result from sandboxed frame:
-  window.addEventListener('message', function(event) {
-    document.querySelector("#result").innerHTML=event.data.result || "invalid result"
-  });
+    // on result from sandboxed frame:
+    window.addEventListener('message', function(event) {
+        $('.login-container').html(event.data.result || "invalid result");
+    });
 });
 
 
