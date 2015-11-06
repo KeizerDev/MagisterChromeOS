@@ -29,8 +29,9 @@ body {
   width: calc(100vw - 100px);
   height: 100vh;
   margin-left: 100px;
-  padding-top: 15px;
+  padding-top: 20px;
   overflow-y: auto;
+  padding-bottom: 20px;
 }
 
 ul {
