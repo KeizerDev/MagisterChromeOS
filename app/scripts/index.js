@@ -3,13 +3,40 @@
 var school;
 
 $( document ).ready(function() {
+    // init();
+    firstrun();
+});
+
+function init() {
+    chrome.storage.sync.get('firstrun', function(e) {
+        if (e == undefined || e == true) {
+            firstrun();
+        } else {
+            dashboard();
+        };
+    });
+}
+
+function containerSetup() {
+    var tempSchooldash = $('#schoollogin').html();
     var tempSchoollogin = $('#schoollogin').html();
-    var tempSchoolkiezen = $('#schoolkiezen').html();
+
+}
+
+
+
+function dashboard() {
+    $('.login-container').html('fsafsdfas dasf');
+}
+
+function firstrun() {
+    var tempMgstrlogin = $('#schoollogin').html();
+    var tempMgstrkiezen = $('#schoolkiezen').html();
 
     // var rendered = Mustache.render(tempSchoolkiezen, {name: "Luke"});
     // $('.login-container').html(rendered);
 
-    $('.login-container').html(Mustache.render(tempSchoolkiezen, {}));
+    $('.login-container').html(Mustache.render(tempMgstrkiezen, {}));
     $('#schoolsearch').on('input', function(e) {
         $.get('https://mijn.magister.net/api/schools?filter=' + $('#schoolsearch').val(), function(res) {
             $('.schoolresult').html('');
@@ -31,7 +58,7 @@ $( document ).ready(function() {
     $(document).on('click', '.btn-submit-school', function(event) {
         if ($('.schoolresult input[name="school"]:checked', '.mgstr-school').data('schoolname') != undefined) {
             school = $('.schoolresult input[name="school"]:checked', '.mgstr-school').data('schoolname');
-            $('.login-container').html(Mustache.render(tempSchoollogin, {}));
+            $('.login-container').html(Mustache.render(tempMgstrlogin, {}));
         };
         event.preventDefault();
     });
@@ -46,47 +73,50 @@ $( document ).ready(function() {
             url: schoolprefix + '/sessies/huidige',
             type: 'DELETE',
             xhrFields: {
-                withCredentials: true
-            },
-            success: function(data, textStatus, xhr){
-                // console.log(xhr.getAllResponseHeaders());
-                $.ajax({
-                    url: schoolprefix + '/sessies',
-                    type: 'POST',
-                    data: {Gebruikersnaam: username, Wachtwoord: password, IngelogdBlijven: false},
-                    xhrFields: {
-                        withCredentials: true,
-                        setDisableHeaderCheck: true
-                    },
-                    success: function(data, textStatus, xhr){
-                        $('.btn-submit-login').removeAttr('disabled');
-
-                        console.log("success");
-                        console.log(xhr);
-                        // alert(request.getResponseHeader(''));
-                        // alert(request.getResponseHeader(''));
-                        // console.log(this.headers)
-                        console.log(xhr.getAllResponseHeaders());
-                        console.log(xhr.getResponseHeader('Set-Cookie'));
-                        console.log(data);
-                    },
-                    failure: function(data, textStatus, xhr) {
-                        $('.btn-submit-login').removeAttr('disabled');
-                    }
-                });
+                withCredentials: true,
+                setDisableHeaderCheck: true
             }
+        }).done(function() {
+            $.ajax({
+                url: schoolprefix + '/sessies',
+                type: 'POST',
+                data: {Gebruikersnaam: username, Wachtwoord: password, IngelogdBlijven: false},
+                xhrFields: {
+                    withCredentials: true,
+                    setDisableHeaderCheck: true
+                },
+                success: function(data, textStatus, xhr){
+                    console.log("success");
+                    saveData({'school': school, 'username': username, 'password': password, firstrun: false});
+                    init();
+                },
+                complete: function(data, textStatus, xhr) {
+                    $('.btn-submit-login').removeAttr('disabled');
+                    console.log(this)
+                }
+            });
         });
         event.preventDefault();
     });
-
-});
-
+}
 
 
+function saveData(obj) {
+    // Pass some sort of object:
+    // {'value': theValue}
 
-// $.ajax({
-//     url: schoolprefix + '/personen/5431/afspraken?status=1&tot=2015-11-04&van=2015-11-03',
-//     success: function(result) {
-//         console.log(result)
-//     }
-// });
+    // Save it using the Chrome extension storage API.
+    chrome.storage.sync.set(obj, function() {
+    });
+}
+
+function getChanges(str) {
+    // get obj:
+    // {'value': theValue}
+
+    // Save it using the Chrome extension storage API.
+    chrome.storage.sync.get(str, function(e) {
+        console.log(e);
+        // return e;
+    });
+}
