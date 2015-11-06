@@ -29,8 +29,10 @@ $( document ).ready(function() {
 
 
     $(document).on('click', '.btn-submit-school', function(event) {
-        school = $('.schoolresult input[name="school"]:checked', '.mgstr-school').data('schoolname');
-        $('.login-container').html(Mustache.render(tempSchoollogin, {}));
+        if ($('.schoolresult input[name="school"]:checked', '.mgstr-school').data('schoolname') != undefined) {
+            school = $('.schoolresult input[name="school"]:checked', '.mgstr-school').data('schoolname');
+            $('.login-container').html(Mustache.render(tempSchoollogin, {}));
+        };
         event.preventDefault();
     });
 
@@ -59,7 +61,6 @@ $( document ).ready(function() {
                     success: function(data, textStatus, xhr){
                         $('.btn-submit-login').removeAttr('disabled');
 
-
                         console.log("success");
                         console.log(xhr);
                         // alert(request.getResponseHeader(''));
@@ -68,7 +69,9 @@ $( document ).ready(function() {
                         console.log(xhr.getAllResponseHeaders());
                         console.log(xhr.getResponseHeader('Set-Cookie'));
                         console.log(data);
-
+                    },
+                    failure: function(data, textStatus, xhr) {
+                        $('.btn-submit-login').removeAttr('disabled');
                     }
                 });
             }
