@@ -30,7 +30,7 @@ body {
   height: 100vh;
   margin-left: 100px;
   padding-top: 15px;
-  overflow: scroll;
+  overflow-y: auto;
 }
 
 ul {
@@ -67,7 +67,7 @@ ul li.logo{
   font-size: 20px;
 }
 
-.img-circle{
+.img-circle {
   border: 2px solid #2980b9;
 }
 
@@ -90,6 +90,10 @@ ul li.logo{
   padding: 0;
 }
 
+.col-xs-5 {
+  padding: 0;
+}
+
 .panel-heading {
   padding: 10px;
   background: white !important;
@@ -109,10 +113,15 @@ ul li.logo{
   text-transform: none;
 }
 
-.panel-item:nth-child(2n) {
+.col-xs-12 .col-xs-6.panel-item:nth-of-type(2n) {
+  padding-left: 7.5px;
+}
+
+.col-xs-12 .col-xs-6.panel-item:nth-of-type(2n + 1) {
   padding-right: 7.5px;
 }
 
-.panel-item:nth-child(2n - 1) {
-  padding-left: 7.5px;
+.panel-heading .glyphicon {
+  font-size: 16px;
+  float: right;
 }
