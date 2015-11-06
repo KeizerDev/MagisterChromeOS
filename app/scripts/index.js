@@ -1,7 +1,8 @@
 'use strict';
 
+var school;
+
 $( document ).ready(function() {
-    var school;
     var tempSchoollogin = $('#schoollogin').html();
     var tempSchoolkiezen = $('#schoolkiezen').html();
 
@@ -22,22 +23,23 @@ $( document ).ready(function() {
             }
             console.log(res);
         });
+
         e.preventDefault();
     });
 
 
-    $('.btn-submit-school').on('click', function(event) {
+    $(document).on('click', '.btn-submit-school', function(event) {
         school = $('.schoolresult input[name="school"]:checked', '.mgstr-school').data('schoolname');
         $('.login-container').html(Mustache.render(tempSchoollogin, {}));
         event.preventDefault();
     });
 
-
-    $('.btn-submit-login').on('click', function(event) {
+    $(document).on('click', '.btn-submit-login', function(event) {
+        $('.btn-submit-login').attr('disabled', '');
         var username = $('.mgstr-user', '.mgstr-login').val();
         var password = $('.mgstr-pass', '.mgstr-login').val();
         var schoolprefix = 'https://'+school+'.magister.net/api';
-        
+
         $.ajax({
             url: schoolprefix + '/sessies/huidige',
             type: 'DELETE',
@@ -55,6 +57,7 @@ $( document ).ready(function() {
                         setDisableHeaderCheck: true
                     },
                     success: function(data, textStatus, xhr){
+                        $('.btn-submit-login').removeAttr('disabled');
 
 
                         console.log("success");
