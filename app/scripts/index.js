@@ -3,30 +3,37 @@
 var school;
 
 $( document ).ready(function() {
-    // init();
-    firstrun();
+    init();
+    // firstrun();
 });
 
 function init() {
     chrome.storage.sync.get('firstrun', function(e) {
         if (e == undefined || e == true) {
+            containerSetup(true);
             firstrun();
         } else {
-            dashboard();
+            containerSetup(false);
         };
     });
 }
 
-function containerSetup() {
-    var tempSchooldash = $('#schoollogin').html();
-    var tempSchoollogin = $('#schoollogin').html();
-
+function containerSetup(firstrun) {
+    $('.app').html();
+    if (firstrun) {
+        var tempSchoollogin = $('#schoolcontainer').html();
+        $('.app').html(Mustache.render(tempSchoollogin, {}));
+        firstrun();
+    } else {
+        var tempSchooldash = $('#schooldashboard').html();
+        $('.app').html(Mustache.render(tempSchooldash, {}));
+        dashboard();
+    }
 }
 
 
-
 function dashboard() {
-    $('.login-container').html('fsafsdfas dasf');
+
 }
 
 function firstrun() {
