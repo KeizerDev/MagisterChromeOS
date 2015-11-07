@@ -3,26 +3,34 @@
 var school;
 
 $( document ).ready(function() {
+
+    // chrome.storage.local.remove('firstrun', function() {
+
+    // });
+
     init();
-    
+
     // Magister.agenda("hal");
     Magister.ChangeElement();
 });
 
 function init() {
-    chrome.storage.sync.get('firstrun', function(e) {
-        if (e == undefined || e == true) {
+    chrome.storage.local.get('firstrun', function(e) {
+        console.log(e)
+        if (e == undefined || e == true || e) {
             containerSetup(true);
+            console.log("SAdasd")
             firstrun();
         } else {
             containerSetup(false);
+            console.log("Sgaa")
         };
     });
 }
 
-function containerSetup(firstrun) {
+function containerSetup(isFirstrun) {
     $('#app').html();
-    if (firstrun) {
+    if (isFirstrun) {
         var tempSchoollogin = $('#schoolcontainer').html();
         $('#app').html(Mustache.render(tempSchoollogin, {}));
         firstrun();
@@ -73,38 +81,9 @@ function firstrun() {
     });
 
     $(document).on('click', '.btn-submit-login', function(event) {
-        $('.btn-submit-login').attr('disabled', '');
         var username = $('.mgstr-user', '.mgstr-login').val();
         var password = $('.mgstr-pass', '.mgstr-login').val();
-        var schoolprefix = 'https://'+school+'.magister.net/api';
-
-        $.ajax({
-            url: schoolprefix + '/sessies/huidige',
-            type: 'DELETE',
-            xhrFields: {
-                withCredentials: true,
-                setDisableHeaderCheck: true
-            }
-        }).done(function() {
-            $.ajax({
-                url: schoolprefix + '/sessies',
-                type: 'POST',
-                data: {Gebruikersnaam: username, Wachtwoord: password, IngelogdBlijven: false},
-                xhrFields: {
-                    withCredentials: true,
-                    setDisableHeaderCheck: true
-                },
-                success: function(data, textStatus, xhr){
-                    console.log("success");
-                    saveData({'school': school, 'username': username, 'password': password, firstrun: false});
-                    init();
-                },
-                complete: function(data, textStatus, xhr) {
-                    $('.btn-submit-login').removeAttr('disabled');
-                    console.log(this)
-                }
-            });
-        });
+        Magister.auth({'school': school, 'username': username, 'password': password});
         event.preventDefault();
     });
 }
@@ -115,7 +94,7 @@ function saveData(obj) {
     // {'value': theValue}
 
     // Save it using the Chrome extension storage API.
-    chrome.storage.sync.set(obj, function() {
+    chrome.storage.local.set(obj, function() {
     });
 }
 
@@ -124,7 +103,7 @@ function getChanges(str) {
     // {'value': theValue}
 
     // Save it using the Chrome extension storage API.
-    chrome.storage.sync.get(str, function(e) {
+    chrome.storage.local.get(str, function(e) {
         console.log(e);
         // return e;
     });
