@@ -4,7 +4,9 @@ var school;
 
 $( document ).ready(function() {
     init();
-    // firstrun();
+    
+    // Magister.agenda("hal");
+    Magister.ChangeElement();
 });
 
 function init() {
@@ -19,14 +21,14 @@ function init() {
 }
 
 function containerSetup(firstrun) {
-    $('.app').html();
+    $('#app').html();
     if (firstrun) {
         var tempSchoollogin = $('#schoolcontainer').html();
-        $('.app').html(Mustache.render(tempSchoollogin, {}));
+        $('#app').html(Mustache.render(tempSchoollogin, {}));
         firstrun();
     } else {
         var tempSchooldash = $('#schooldashboard').html();
-        $('.app').html(Mustache.render(tempSchooldash, {}));
+        $('#app').html(Mustache.render(tempSchooldash, {}));
         dashboard();
     }
 }
