@@ -3,55 +3,37 @@
 var school;
 
 $( document ).ready(function() {
+    chrome.storage.local.set({'firstrun': false}, function() {});
 
-    // chrome.storage.local.remove('firstrun', function() {
-
-    // });
-
-    init();
-
-    // Magister.agenda("hal");
-    Magister.ChangeElement();
-});
-
-function init() {
     chrome.storage.local.get('firstrun', function(e) {
         console.log(e)
-        if (e == undefined || e == true || e) {
-            containerSetup(true);
-            console.log("SAdasd")
-            firstrun();
+        if (e.firstrun == true) {
+            console.log(true);
         } else {
-            containerSetup(false);
-            console.log("Sgaa")
+            console.log(false);
         };
     });
-}
-
-function containerSetup(isFirstrun) {
-    $('#app').html();
-    if (isFirstrun) {
-        var tempSchoollogin = $('#schoolcontainer').html();
-        $('#app').html(Mustache.render(tempSchoollogin, {}));
-        firstrun();
-    } else {
-        var tempSchooldash = $('#schooldashboard').html();
-        $('#app').html(Mustache.render(tempSchooldash, {}));
-        dashboard();
-    }
-}
 
 
-function dashboard() {
+// function containerSetup(isFirstrun) {
+//     $('#app').html();
+//     if (isFirstrun) {
+//         var tempSchoollogin = $('#schoolcontainer').html();
+//         $('#app').html(Mustache.render(tempSchoollogin, {}));
+//     } else {
+//         var tempSchooldash = $('#schooldashboard').html();
+//         $('#app').html(Mustache.render(tempSchooldash, {}));
+//     }
+// }
 
-}
 
-function firstrun() {
+// function firstrun() {
+    var tempMgstrContainer = $('#schoolcontainer').html();
     var tempMgstrlogin = $('#schoollogin').html();
     var tempMgstrkiezen = $('#schoolkiezen').html();
 
-    // var rendered = Mustache.render(tempSchoolkiezen, {name: "Luke"});
-    // $('.login-container').html(rendered);
+    var rendered = Mustache.render(tempMgstrContainer, {});
+    $('#app').html(rendered);
 
     $('.login-container').html(Mustache.render(tempMgstrkiezen, {}));
     $('#schoolsearch').on('input', function(e) {
@@ -75,18 +57,13 @@ function firstrun() {
     $(document).on('click', '.btn-submit-school', function(event) {
         if ($('.schoolresult input[name="school"]:checked', '.mgstr-school').data('schoolname') != undefined) {
             school = $('.schoolresult input[name="school"]:checked', '.mgstr-school').data('schoolname');
-            $('.login-container').html(Mustache.render(tempMgstrlogin, {}));
+            // Start iframe
+            console.log('lol');
         };
         event.preventDefault();
     });
 
-    $(document).on('click', '.btn-submit-login', function(event) {
-        var username = $('.mgstr-user', '.mgstr-login').val();
-        var password = $('.mgstr-pass', '.mgstr-login').val();
-        Magister.auth({'school': school, 'username': username, 'password': password});
-        event.preventDefault();
-    });
-}
+});
 
 
 function saveData(obj) {
