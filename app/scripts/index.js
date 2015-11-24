@@ -36,18 +36,6 @@ function viewMagisterframe() {
     var tempMgstrwebview = $('#magisterframe').html();
     $('#app').html(Mustache.render(tempMgstrwebview, {}));
     chrome.storage.local.get('school', setupWebview);
-
-    // var loadstart = function() {
-    //     // indicator.innerText = "loading...";
-    // }
-
-    // var loadstop = function() {
-    //     // indicator.innerText = "";
-    // }
-
-    // webview.addEventListener("loadstart", loadstart);
-    // webview.addEventListener("loadstop", loadstop);
-
 }
 
 function saveData(obj) {
