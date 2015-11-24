@@ -18,24 +18,6 @@
         <!-- endbuild -->
     </head>
     <body>
-        <!-- Schoolkiezer -->
-        <script id="schoolkiezen" type="x-tmpl-mustache">
-            <form target="_blank" class="mgstr-school">
-                <input class="form-control" type="text" id="schoolsearch" placeholder="School">
-                <div class="list-group schoolresult"></div>
-                <input class="btn btn-default btn-submit-school" type="submit" value="KIES MIJN SCHOOL">
-            </form
-        </script>
-
-        <!-- Login -->
-        <script id="schoollogin" type="x-tmpl-mustache">
-            <form target="_blank" class="mgstr-login">
-                <input class="form-control mgstr-userlogin mgstr-user" type="text" placeholder="Gebruikersnaam">
-                <input class="form-control mgstr-userlogin mgstr-pass" type="password" placeholder="Wachtwoord">
-                <input class="btn btn-default btn-submit-login" type="submit" value="Inloggen">
-            </form>
-        </script>
-
         <!-- Scholencontainer -->
         <script id="schoolcontainer" type="x-tmpl-mustache">
             <div class="login">
@@ -48,8 +30,18 @@
             </div>
         </script>
 
-        <script id="magisterframecontainer" type="x-tmpl-mustache">
-            <webview id="magisterframe" src="http://www.google.com/" style="width:640px; height:480px"></webview>
+        <!-- Schoolkiezer -->
+        <script id="schoolkiezen" type="x-tmpl-mustache">
+            <form target="_blank" class="mgstr-school">
+                <input class="form-control" type="text" id="schoolsearch" placeholder="School">
+                <div class="list-group schoolresult"></div>
+                <input class="btn btn-default btn-submit-school" type="submit" value="KIES MIJN SCHOOL">
+            </form>
+        </script>
+
+        <!-- Magisterframe -->
+        <script id="magisterframe" type="x-tmpl-mustache">
+            <webview id="magisterframe" src="http://farel.magister.net/" style="width:640px; height:480px"></webview>
         </script>
 
         <div id="app"></div>
