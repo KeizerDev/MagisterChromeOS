@@ -51,7 +51,6 @@
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
         <script src="bower_components/mustache.js/mustache.js"></script>
-        <script src="bower_components/chrome-platform-analytics/google-analytics-bundle.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
 
@@ -59,11 +58,5 @@
         <script src="scripts/magister.js"></script>
         <script src="scripts/index.js"></script>
         <!-- endbuild -->
-        <script type="text/javascript">
-            // You'll usually only ever have to create one service instance.
-            var service = analytics.getService('magister_chrome_app');
-            var tracker = service.getTracker('UA-29146601-10');
-            tracker.sendAppView('MainView');
-        </script>
     </body>
 </html>

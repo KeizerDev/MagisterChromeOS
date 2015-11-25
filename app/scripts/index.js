@@ -52,6 +52,10 @@ function setupWebview(e) {
 
     webview.src = "https://" + e.school + ".magister.net/";
     webview.setUserAgentOverride(userAgent);
+    webview.cache = true;
+    webview.localStorage = true;
+    webview.appcache = true;
+    webview.cookies = true;
     console.log(webview);
     // var indicator = document.querySelector(".indicator");
 }
